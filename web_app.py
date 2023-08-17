@@ -77,7 +77,7 @@ def detect_and_decode_qr(image):
             qr_images.append(imagen)
             aligned_images.append(aligned_img)
 
-            qreader_out = qreader_reader.detect_and_decode(image=imagen)
+            #qreader_out = qreader_reader.detect_and_decode(image=imagen)
             cv2_out = cv2_reader.detectAndDecode(img=imagen)[0]
 
             """
