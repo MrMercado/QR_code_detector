@@ -6,7 +6,7 @@ import shutil                                   # para trabajar sobre directorio
 import cv2                                      # Para leer y mostrar imagenes
 from ultralytics import YOLO                    # Nuestro detector de codigos QR
 from cv2 import QRCodeDetector                  # Para extraer codigo QR
-#from qreader import QReader
+from qreader import QReader
 
 
 def process_image(image):
@@ -64,7 +64,7 @@ def detect_and_decode_qr(image):
     except Exception as e:
         imagenes = []
 
-    #qreader_reader, cv2_reader = QReader(), QRCodeDetector()
+    qreader_reader, cv2_reader = QReader(), QRCodeDetector()
     cv2_reader = QRCodeDetector()
 
     qr_images = []
@@ -77,25 +77,19 @@ def detect_and_decode_qr(image):
             qr_images.append(imagen)
             aligned_images.append(aligned_img)
 
-            #qreader_out = qreader_reader.detect_and_decode(image=imagen)
+            qreader_out = qreader_reader.detect_and_decode(image=imagen)
             cv2_out = cv2_reader.detectAndDecode(img=imagen)[0]
 
-            """
+            
             # Validar la decodificación
             if qreader_out and qreader_out[0]:  # Verificamos que la tupla no esté vacía y su primer elemento no sea None o una cadena vacía
                 qr_text.append(qreader_out[0])
             elif cv2_out:  # Verificamos que la cadena no esté vacía
                 qr_text.append(cv2_out)
             else:
-                qr_text.append("No se logró la decodificación del código QR")"""
-
-
-            # Validar la decodificación
-            if cv2_out:  # Verificamos que la cadena no esté vacía
-                qr_text.append(cv2_out)
-            else:
                 qr_text.append("No se logró la decodificación del código QR")
-            
+
+
         except cv2.error as e:
             qr_text.append(f"Error al procesar la imagen: {e}")
 
@@ -148,7 +142,7 @@ def align_image(imagen):
 def main():
     st.title("Detector y Decodificador de Códigos QR con Deep Learning y procesamiento de imagenes")
 
-    option = st.sidebar.selectbox(
+    option = st.sidebar.radio(
         'Elige una opción para hacer inferencia:',
         ('Selecciona una imagen de tu ordenador', 'Usa una imagen de muestra', 'Toma una foto con tu cámara web')
     )
@@ -195,16 +189,12 @@ def main():
         st.write("Haz clic en el botón para capturar una imagen desde tu cámara y analizarla en busca de códigos QR.")
         st.write("Te recomendamos estar quieto 3 segundos.")
 
-        if st.button('Capturar Imagen'):
-            cap = cv2.VideoCapture(0)
-            cv2.waitKey(2000)
-            ret, frame = cap.read()
-            cap.release()
+        captured_image = st.camera_input("Toma una foto")
 
-            if ret:
-                process_image(frame)
-            else:
-                st.error("Error al capturar la imagen desde la cámara.")
+        if captured_image is not None:
+            bytes_data = captured_image.getvalue()
+            picture = cv2.imdecode(np.frombuffer(bytes_data, np.uint8), cv2.IMREAD_COLOR)
+            process_image(picture)
 
 
 if __name__ == "__main__":
