@@ -65,7 +65,7 @@ def detect_and_decode_qr(image):
         imagenes = []
 
     #qreader_reader, cv2_reader = QReader(), QRCodeDetector()
-    qreader_reader, cv2_reader = QReader(), QRCodeDetector()
+    cv2_reader = QRCodeDetector()
 
     qr_images = []
     aligned_images = []
