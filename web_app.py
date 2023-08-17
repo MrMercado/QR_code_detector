@@ -138,7 +138,7 @@ def align_image(imagen):
 def main():
     st.title("Detector y Decodificador de Códigos QR con Deep Learning y procesamiento de imagenes")
 
-    option = st.sidebar.selectbox(
+    option = st.sidebar.radio(
         'Elige una opción para hacer inferencia:',
         ('Selecciona una imagen de tu ordenador', 'Usa una imagen de muestra', 'Toma una foto con tu cámara web')
     )
