@@ -6,7 +6,7 @@ import shutil                                   # para trabajar sobre directorio
 import cv2                                      # Para leer y mostrar imagenes
 from ultralytics import YOLO                    # Nuestro detector de codigos QR
 from cv2 import QRCodeDetector                  # Para extraer codigo QR
-from qreader import QReader
+#from qreader import QReader
 
 
 def process_image(image):
@@ -64,6 +64,7 @@ def detect_and_decode_qr(image):
     except Exception as e:
         imagenes = []
 
+    #qreader_reader, cv2_reader = QReader(), QRCodeDetector()
     qreader_reader, cv2_reader = QReader(), QRCodeDetector()
 
     qr_images = []
@@ -79,13 +80,22 @@ def detect_and_decode_qr(image):
             qreader_out = qreader_reader.detect_and_decode(image=imagen)
             cv2_out = cv2_reader.detectAndDecode(img=imagen)[0]
 
+            """
             # Validar la decodificación
             if qreader_out and qreader_out[0]:  # Verificamos que la tupla no esté vacía y su primer elemento no sea None o una cadena vacía
                 qr_text.append(qreader_out[0])
             elif cv2_out:  # Verificamos que la cadena no esté vacía
                 qr_text.append(cv2_out)
             else:
+                qr_text.append("No se logró la decodificación del código QR")"""
+
+
+            # Validar la decodificación
+            if cv2_out:  # Verificamos que la cadena no esté vacía
+                qr_text.append(cv2_out)
+            else:
                 qr_text.append("No se logró la decodificación del código QR")
+            
         except cv2.error as e:
             qr_text.append(f"Error al procesar la imagen: {e}")
 
