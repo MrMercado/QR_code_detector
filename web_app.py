@@ -87,7 +87,7 @@ def detect_and_decode_qr(image):
                 qr_text.append("No se logró la decodificación del código QR")
             
         except cv2.error as e:
-            qr_text.append(f"Error al procesar la imagen: {e}")
+            qr_text.append(f"No se logró la decodificación del código QR")
 
     return qr_detectado, qr_images, aligned_images, qr_text
 
