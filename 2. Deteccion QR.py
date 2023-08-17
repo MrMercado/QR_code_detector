@@ -154,7 +154,7 @@ def main():
     # Usa el modelo para detectar códigos QR en la imagen especificada.
     # `qr_detected` es la imagen original con bounding boxes alrededor de los códigos QR detectados.
     # `cropped_qr_images` es una lista de imágenes recortadas, cada una conteniendo un código QR detectado.
-    qr_detected, cropped_qr_images = detect_qr(model, './Prueba_crop_opencv/10.png')
+    qr_detected, cropped_qr_images = detect_qr(model, './img_inferencia/1.jpg')
     
     # Muestra la imagen con los bounding boxes alrededor de los códigos QR detectados.
     cv2.imshow('Detector de codigos QR', qr_detected)
