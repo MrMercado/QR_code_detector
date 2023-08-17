@@ -185,16 +185,12 @@ def main():
         st.write("Haz clic en el botón para capturar una imagen desde tu cámara y analizarla en busca de códigos QR.")
         st.write("Te recomendamos estar quieto 3 segundos.")
 
-        if st.button('Capturar Imagen'):
-            cap = cv2.VideoCapture(0)
-            cv2.waitKey(2000)
-            ret, frame = cap.read()
-            cap.release()
+        captured_image = st.camera_input("Toma una foto")
 
-            if ret:
-                process_image(frame)
-            else:
-                st.error("Error al capturar la imagen desde la cámara.")
+        if captured_image is not None:
+            bytes_data = captured_image.getvalue()
+            picture = cv2.imdecode(np.frombuffer(bytes_data, np.uint8), cv2.IMREAD_COLOR)
+            process_image(picture)
 
 
 if __name__ == "__main__":
