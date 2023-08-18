@@ -72,4 +72,25 @@ Con esto se abrira en el navegador la siguiente interfaz:
 
 ![image](https://github.com/MrMercado/QR_code_detector/assets/126843626/aff585ce-6846-4d3a-81a1-7e46fd561b5c)
 
+La aplicacion web local tiene tres maneras de hacer inferencia que se seleccionan en el sidebar de la izquierda
 
+- La primera opción es seleccionando un documento desde tu computador, el resultado del procesamiento se muestra en varias columnas como se muestra a continuación:
+    - La primer columna corresponde a la imagen seleccionada por el usuario
+    - La segunda columna muestra la detección realizada por el modelo
+    - La tercer columna muestra los códigos QR extraídos de la imagen
+    - La cuarta columna muestra el código QR rotado
+    - Por ultimo el contenido del código QR se encuentra en el caption de cada código QR detectado.
+
+![image](https://github.com/MrMercado/QR_code_detector/assets/126843626/8dd25e16-bdba-4784-9bcc-c3235d20dfc6)
+
+- La segunda opcion da la posibilidad de seleccionar entre 6 imagenes previamente definidas como se muestra a continuacion:
+![image](https://github.com/MrMercado/QR_code_detector/assets/126843626/8c57e7c7-60d1-47dc-b7fa-f277e71914b1)
+- La tercer opción permite tomar una fotografía con la camara web y hacer inferencia ¡EN VIVO!
+![image](https://github.com/MrMercado/QR_code_detector/assets/126843626/0e4969b1-6a9d-4dd8-92ec-92f9926fd749)
+![image](https://github.com/MrMercado/QR_code_detector/assets/126843626/200a9799-50e3-49a2-b9e4-67dc916927f9)
+
+Finalmente esta aplicación web se despliega en internet para hacer inferencia en linea sin instalar ni descargar códigos que se encuentra en el siguiente link:
+
+# [QR_code_detector](https://qrcodedetector.streamlit.app/)
+
+### **¡NOTA! La app web en linea tiene problemas con las dependencias de la librería `QReader` , por esta razón solo se intenta extraer el texto del código QR con una estrategia de decodificación en lugar de dos, lo cual reduce la robustez del la extracción en comparación al entorno web local.**
