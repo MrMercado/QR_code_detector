@@ -93,4 +93,4 @@ La aplicación web local tiene tres maneras de hacer inferencia que se seleccion
 
 # [QR_code_detector](https://qrcodedetector.streamlit.app/)
 
-### **¡NOTA! La app web desplegada en la nube corresponde al script `web_app.py`, streamlit online tiene problemas con las dependencias de la librería `QReader` al momento de hacer el despligue, por esta razón solo se intenta extraer el texto del código QR con una estrategia de decodificación en lugar de dos, lo cual reduce la robustez de la extracción de información del código QR en comparación a la app `web_app_local.py` instalada en el entorno local.**
+### **¡NOTA! La app web desplegada en la nube corresponde al script `web_app.py`, streamlit online tiene problemas con las dependencias de la librería `QReader` al momento de hacer el despliegue, por esta razón solo se intenta extraer el texto del código QR con una estrategia de decodificación en lugar de dos, lo cual reduce la robustez de la extracción de información del código QR en comparación a la app `web_app_local.py` instalada en el entorno local.**
