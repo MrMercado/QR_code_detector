@@ -140,7 +140,7 @@ def align_image(imagen):
     return aligned_imagen, aligned_gray
 
 def main():
-    st.title("Detector y Decodificador de Códigos QR con Deep Learning y procesamiento de imagenes")
+    st.title("Detector y Decodificador de Códigos QR con Deep Learning y procesamiento de imágenes")
 
     option = st.sidebar.radio(
         'Elige una opción para hacer inferencia:',
